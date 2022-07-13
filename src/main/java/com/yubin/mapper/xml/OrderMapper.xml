@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yubin.mapper.OrderMapper">
+
+    <sql id="OrderColumns">
+
+    </sql>
+
+    <insert id="insertNotice" parameterType="com.yubin.entity.Notice">
+        INSERT INTO order(
+         content,
+         autor,
+         create_time,
+         update_time
+        )VALUES (
+        #{content},
+        #{autor}
+        #{create_time}
+        #{update_time}
+        )
+    </insert>
+
+    <delete id="deleteNotice">
+    update  order set
+    status = "1"
+    where order_id =#{order_id}
+    </delete>
+
+    <update id="updateNotice">
+        update order set
+        <if test="content !='' and content !=null " >content =#{content} </if>
+        <if test="autor !='' and autor !=null " >autor =#{autor} </if>
+        <if test="create_time !='' and create_time !=null " >create_time =#{create_time} </if>
+        <if test="update_time !='' and update_time !=null " >update_time =#{update_time} </if>
+    </update>
+
+    <select id="selectAllOrder" resultType="com.yubin.entity.Order">
+        select
+        <include refid="NoticeColumns"/>
+        from order where status = '0'
+    </select>
+
+    <select id="selectOrderById" resultType="com.yubin.entity.Order">
+        select
+        <include refid="OrderColumns"/>
+        from order where status = '0' and order_id = #{order_id}
+    </select>
+
+    <select id="selectOrderRecord">
+        select
+        <include refid="OrderColumns"/>
+        from order
+    </select>
+
+</mapper>

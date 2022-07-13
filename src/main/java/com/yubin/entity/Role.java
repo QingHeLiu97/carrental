@@ -14,7 +14,7 @@ import java.util.Date;
 public class Role {
 
     //编号
-    private int id;
+    private int role_id;
     //用户id
     private String user_id;
     //用户名

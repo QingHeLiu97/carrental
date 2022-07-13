@@ -15,7 +15,7 @@ import java.util.Date;
 public class Car {
 
     //汽车编号
-    private int id;
+    private int car_id;
     //类型
     private String type;
     //颜色
@@ -26,10 +26,6 @@ public class Car {
     private String deposit;
     //车名
     private String carname;
-    //租车人id
-    private String user_id;
-    //租车人姓名
-    private String username;
     //创建时间
     private Date create_time;
     //更新时间

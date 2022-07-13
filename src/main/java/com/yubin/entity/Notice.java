@@ -13,7 +13,7 @@ import java.util.Date;
 @Builder
 public class Notice {
     //编号
-    private  int id;
+    private  int notice_id;
     //内容
     private String content;
     //发布人

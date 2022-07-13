@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class User {
 
     //用户编号
-    private int id;
+    private int user_id;
     //用户名
     private String username;
     //用户密码

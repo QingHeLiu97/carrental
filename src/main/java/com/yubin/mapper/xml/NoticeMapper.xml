@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yubin.mapper.NoticeMapper">
+
+    <sql id="NoticeColumns">
+        notice_id AS notice_id,
+        content AS content,
+        autor AS autor ,
+        create_time AS create_time,
+        update_time AS update_time,
+        status AS stauts
+    </sql>
+
+    <insert id="insertNotice" parameterType="com.yubin.entity.Notice">
+        INSERT INTO notice(
+         content,
+         autor,
+         create_time,
+         update_time
+        )VALUES (
+        #{content},
+        #{autor}
+        #{create_time}
+        #{update_time}
+        )
+    </insert>
+
+    <delete id="deleteNotice">
+    update  notice set
+    status = "1"
+    where notice_id =#{notice_id}
+    </delete>
+
+    <update id="updateNotice">
+        update notice set
+        <if test="content !='' and content !=null " >content =#{content} </if>
+        <if test="autor !='' and autor !=null " >autor =#{autor} </if>
+        <if test="create_time !='' and create_time !=null " >create_time =#{create_time} </if>
+        <if test="update_time !='' and update_time !=null " >update_time =#{update_time} </if>
+    </update>
+
+    <select id="selectAllNotice" resultType="com.yubin.entity.Notice">
+        select
+        <include refid="NoticeColumns"/>
+        from notice where status = '0'
+    </select>
+
+    <select id="selectNoticeById" resultType="com.yubin.entity.Notice">
+        select
+        <include refid="CarColumns"/>
+        from car where status = '0' and car_id = #{car_id}
+    </select>
+
+    <select id="selectNoticeRecord">
+        select
+        <include refid="CarColumns"/>
+        from car
+    </select>
+
+</mapper>

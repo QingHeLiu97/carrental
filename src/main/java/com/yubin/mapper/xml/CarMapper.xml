@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yubin.mapper.CarMapper">
+
+    <sql id="CarColumns">
+        car_id As car_id,
+        type AS type ,
+        color AS color,
+        price AS price,
+        deposit AS deposit,
+        carname AS carname,
+        create_time AS create_time,
+        update_time AS update_time,
+        status AS status
+    </sql>
+
+    <insert id="insertCar" >
+        INSET INTO car(
+        type,
+        color,
+        price,
+        deposit,
+        carname,
+        create_time,
+        update_time
+        )VALUES (
+        #{color},
+        #{price},
+        #{deposit},
+        #{carname},
+        #{create_time},
+        #{update_time}
+        )
+    </insert>
+
+    <delete id="deleteCarById">
+        update car set
+        status = "1"
+        where car_id = #{car_id}
+    </delete>
+
+    <update id="updateCar" parameterType="com.yubin.entity.Car">
+        update car set
+        <if test="type !='' and type !=null " >type =#{type} </if>
+        <if test="color !='' and color !=null " >color =#{color} </if>
+        <if test="price !='' and price !=price " >price =#{price} </if>
+        <if test="deposit !='' and deposit !=null " >deposit =#{deposit} </if>
+        <if test="carname !='' and carname !=null " >carname =#{carname} </if>
+        <if test="create_time !='' and create_time !=null " >create_time =#{create_time} </if>
+        <if test="update_time !='' and update_time !=null " >update_time =#{update_time} </if>
+    </update>
+
+    <select id="selectAllCar" resultType="com.yubin.entity.Car">
+        select
+        <include refid="CarColumns" />
+         from car where status = '0'
+    </select>
+
+    <select id="selectCarByid" resultType="com.yubin.entity.Car">
+        select
+        <include refid="CarColumns"/>
+        from car where status = '0' and car_id = #{car_id}
+    </select>
+
+    <select id="selectCarRecord">
+        select
+        <include refid="CarColumns"/>
+        from car
+    </select>
+</mapper>
