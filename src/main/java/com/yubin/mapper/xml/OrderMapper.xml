@@ -3,40 +3,69 @@
 <mapper namespace="com.yubin.mapper.OrderMapper">
 
     <sql id="OrderColumns">
-
+        order_id AS order_id,
+        car_id AS  car_id,
+        car_price AS car_price,
+        car_type AS car_type,
+        car_color AS car_color,
+        deposit AS deposit,
+        user_id AS user_id,
+        username AS username,
+        user_phone AS user_phone,
+        user_adddress AS user_adddress,
+        handlers_name AS handlers_name ,
+        status AS status
     </sql>
 
-    <insert id="insertNotice" parameterType="com.yubin.entity.Notice">
+    <insert id="insertOrder" parameterType="com.yubin.entity.Order">
         INSERT INTO order(
-         content,
-         autor,
-         create_time,
-         update_time
+         car_id,
+         car_price,
+         car_type,
+         car_color,
+         deposit,
+         user_id,
+         username,
+         user_phone,
+         user_adddress,
+         handlers_name
         )VALUES (
-        #{content},
-        #{autor}
-        #{create_time}
-        #{update_time}
+        #{car_id},
+        #{car_price},
+        #{car_type},
+        #{car_color},
+        #{deposit},
+        #{user_id},
+        #{username},
+        #{user_phone},
+        #{user_adddress},
+        #{handlers_name}
         )
     </insert>
 
-    <delete id="deleteNotice">
+    <delete id="deleteOrder">
     update  order set
     status = "1"
     where order_id =#{order_id}
     </delete>
 
-    <update id="updateNotice">
+    <update id="updateOrder">
         update order set
-        <if test="content !='' and content !=null " >content =#{content} </if>
-        <if test="autor !='' and autor !=null " >autor =#{autor} </if>
-        <if test="create_time !='' and create_time !=null " >create_time =#{create_time} </if>
-        <if test="update_time !='' and update_time !=null " >update_time =#{update_time} </if>
+        <if test="car_id !='' and car_id !=null " >car_id =#{car_id} ,</if>
+        <if test="car_price !='' and car_price !=null " >car_price =#{car_price}, </if>
+       <if test="car_type !='' and car_type !=null " >car_type =#{car_type} ,</if>
+       <if test="car_color !='' and car_color !=null " >car_color =#{car_color} ,</if>
+       <if test="deposit !='' and deposit !=null " >deposit =#{deposit} ,</if>
+       <if test="user_id !='' and user_id !=null " >user_id =#{user_id} ,</if>
+       <if test="username !='' and username !=null " >username =#{username} ,</if>
+       <if test="user_phone !='' and user_phone !=null " >user_phone =#{user_phone} ,</if>
+       <if test="user_adddress !='' and user_adddress !=null " >user_adddress =#{user_adddress} ,</if>
+       <if test="handlers_name !='' and handlers_name !=null " >handlers_name =#{handlers_name} ,</if>
     </update>
 
     <select id="selectAllOrder" resultType="com.yubin.entity.Order">
         select
-        <include refid="NoticeColumns"/>
+        <include refid="OrderColumns"/>
         from order where status = '0'
     </select>
 

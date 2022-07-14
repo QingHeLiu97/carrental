@@ -1,7 +1,10 @@
 package com.yubin.service;
 
+import com.alibaba.fastjson.JSON;
 import com.yubin.dao.CarDao;
 import com.yubin.entity.Car;
+import com.yubin.mapper.CarMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,19 +12,22 @@ import java.util.List;
 @Service
 public class CarService implements CarDao {
 
+    @Autowired
+    private CarMapper carMapper;
+
     @Override
-    public int insertCar(Car car) {
-        return 0;
+    public String insertCar(Car car) {
+        return JSON.toJSONString(carMapper.insertCar(car));
     }
 
     @Override
-    public int deleteCarById(String id) {
-        return 0;
+    public String deleteCarById(String id) {
+        return JSON.toJSONString(carMapper.deleteCarById(id));
     }
 
     @Override
-    public int updateCar(Car car) {
-        return 0;
+    public String updateCar(Car car) {
+        return null;
     }
 
     @Override

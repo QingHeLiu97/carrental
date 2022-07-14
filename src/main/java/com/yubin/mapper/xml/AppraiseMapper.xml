@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yubin.mapper.AppraiseMapper">
+
+    <sql id="AppraiseColumns">
+        appr_id As appr_id,
+        content AS content ,
+        create_by AS create_by,
+        create_time AS create_time,
+        update_time AS update_time,
+        level AS level,
+        status AS status
+    </sql>
+
+    <insert id="insertAppraise" >
+        INSET INTO appraise(
+        content,
+        create_by,
+        create_time,
+        update_time,
+        level,
+        status
+        )VALUES (
+        #{content},
+        #{create_by},
+        #{create_time},
+        #{update_time},
+        #{level},
+        #{status}
+        )
+    </insert>
+
+    <delete id="deleteAppraiseById">
+        update appraise set
+        status = "1"
+        where appr_id = #{appr_id}
+    </delete>
+
+    <update id="updateAppraise" parameterType="com.yubin.entity.Appraise">
+        update appraise set
+        <if test="content !='' and content !=null " >content =#{content} </if>
+        <if test="create_by !='' and create_by !=null " >create_by =#{create_by} </if>
+        <if test="update_time !='' and update_time !=null " >update_time =#{update_time} </if>
+        <if test="level !='' and level !=null " >level =#{level} </if>
+    </update>
+
+    <select id="selectAllAppraise" resultType="com.yubin.entity.Appraise">
+        select
+        <include refid="AppraiseColumns" />
+         from appraise where status = '0'
+    </select>
+
+    <select id="selectAppraiseByid" resultType="com.yubin.entity.Appraise">
+        select
+        <include refid="AppraiseColumns"/>
+        from appraise where status = '0' and appr_id = #{appr_id}
+    </select>
+
+    <select id="selectAppraiseRecord">
+        select
+        <include refid="AppraiseColumns"/>
+        from appraise
+    </select>
+</mapper>
