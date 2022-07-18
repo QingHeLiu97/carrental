@@ -2,6 +2,61 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yubin.mapper.RoleMapper">
 
+    <sql id="RoleColumns">
+       role_id AS role_id,
+       user_id AS user_id,
+       user_name AS user_name,
+       role AS role,
+       create_time AS create_time,
+       update_time AS update_time ,
+        status AS status
+    </sql>
+
+    <insert id="insertNotice" parameterType="com.yubin.entity.Notice">
+        INSERT INTO role(
+         content,
+         autor,
+         create_time,
+         update_time
+        )VALUES (
+        #{content},
+        #{autor}
+        #{create_time}
+        #{update_time}
+        )
+    </insert>
+
+    <delete id="deleteRoleById">
+    update  role set
+    status = "1"
+    where role_id =#{role_id}
+    </delete>
+
+    <update id="updateRole">
+        update role set
+        <if test="user_id !='' and user_id !=null " >user_id =#{user_id} ,</if>
+        <if test="user_name !='' and user_name !=null " >user_name =#{user_name}, </if>
+        <if test="role !='' and role !=null " >role =#{role} ,</if>
+        <if test="update_time !='' and update_time !=null " >update_time =#{update_time} </if>
+    </update>
+
+    <select id="selectAllRole" resultType="com.yubin.entity.Role">
+        select
+        <include refid="RoleColumns"/>
+        from role where status = '0'
+    </select>
+
+    <select id="selectRoleByid" resultType="com.yubin.entity.Role">
+        select
+        <include refid="RoleColumns"/>
+        from role where status = '0' and role_id = #{role_id}
+    </select>
+
+    <select id="selectRoleRecord">
+        select
+        <include refid="RoleColumns"/>
+        from role
+    </select>
 
 
 </mapper>

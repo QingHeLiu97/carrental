@@ -19,8 +19,8 @@
          update_time
         )VALUES (
         #{content},
-        #{autor}
-        #{create_time}
+        #{autor},
+        #{create_time},
         #{update_time}
         )
     </insert>
@@ -33,9 +33,8 @@
 
     <update id="updateNotice">
         update notice set
-        <if test="content !='' and content !=null " >content =#{content} </if>
-        <if test="autor !='' and autor !=null " >autor =#{autor} </if>
-        <if test="create_time !='' and create_time !=null " >create_time =#{create_time} </if>
+        <if test="content !='' and content !=null " >content =#{content} ,</if>
+        <if test="autor !='' and autor !=null " >autor =#{autor} ,</if>
         <if test="update_time !='' and update_time !=null " >update_time =#{update_time} </if>
     </update>
 
@@ -47,14 +46,14 @@
 
     <select id="selectNoticeById" resultType="com.yubin.entity.Notice">
         select
-        <include refid="CarColumns"/>
-        from car where status = '0' and car_id = #{car_id}
+        <include refid="NoticeColumns"/>
+        from notice where status = '0' and notice_id = #{notice_id}
     </select>
 
     <select id="selectNoticeRecord">
         select
-        <include refid="CarColumns"/>
-        from car
+        <include refid="NoticeColumns"/>
+        from notice
     </select>
 
 </mapper>

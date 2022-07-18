@@ -13,5 +13,7 @@ public interface RoleMapper {
 
     List<Role> selectAllRole();
 
+    List<Role> selectRoleRecord();
+
     Role selectRoleByid(String id);
 }

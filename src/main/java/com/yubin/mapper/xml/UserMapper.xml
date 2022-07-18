@@ -1,6 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yubin.mapper.UserMapper">
+    <sql id="UserColumns">
+       user_id AS user_id,
+       username AS username,
+       sex AS sex,
+       phone AS phone,
+       email AS email,
+       id_card AS id_card,
+       address AS address,
+       create_time AS create_time,
+       update_time AS update_time,
+       status AS status
+    </sql>
+
+    <insert id="insertUser" parameterType="com.yubin.entity.User">
+        INSERT INTO user(
+         username,
+         password,
+         sex,
+         phone,
+         email,
+         id_card,
+         address,
+         create_time,
+         update_time
+        )VALUES (
+        #{username},
+        #{password},
+        #{sex},
+        #{phone},
+        #{email},
+        #{id_card},
+        #{address},
+        #{create_time},
+        #{update_time}
+        )
+    </insert>
+
+    <delete id="deleteUser">
+    update  user set
+    status = "1"
+    where user_id =#{user_id}
+    </delete>
+
+    <update id="updateUser">
+        update user set
+        <if test="username !='' and username !=null " >username =#{username} ,</if>
+        <if test="password !='' and password !=null " >password =#{password} ,</if>
+        <if test="sex !='' and sex !=null " >sex =#{sex} ,</if>
+        <if test="phone !='' and phone !=null " >phone =#{phone} ,</if>
+        <if test="email !='' and email !=null " >email =#{email} ,</if>
+        <if test="id_card !='' and id_card !=null " >id_card =#{id_card} ,</if>
+        <if test="address !='' and address !=null " >address =#{address} ,</if>
+        <if test="address !='' and address !=null " >address =#{address} ,</if>
+        <if test="update_time !='' and update_time !=null " >update_time =#{update_time} </if>
+    </update>
+
+    <select id="selectAllUser" resultType="com.yubin.entity.User">
+        select
+        <include refid="UserColumns"/>
+        from user where status = '0'
+    </select>
+
+    <select id="selectUserByid" resultType="com.yubin.entity.User">
+        select
+        <include refid="UserColumns"/>
+        from user where status = '0' and user_id = #{user_id}
+    </select>
+
+    <select id="selectUserRecord">
+        select
+        <include refid="UserColumns"/>
+        from user
+    </select>
 
 
 

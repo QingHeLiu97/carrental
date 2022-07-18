@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface CarDao {
 
-    int insertCar(Car car);
+    String insertCar(Car car);
 
-    int deleteCarById(String id);
+    String deleteCarById(String id);
 
-    int updateCar(Car car);
+    String updateCar(Car car);
 
     List<Car> selectAllCar();
 
