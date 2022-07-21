@@ -1,10 +1,15 @@
-package com.yubin.demo;
+package com.yubin;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication(exclude= DataSourceAutoConfiguration.class)
+@MapperScan({"com.yubin.mapper"})
+//@EntityScan({"com.yubin.entity"})
+@SpringBootApplication()
 public class DemoApplication {
 
     public static void main(String[] args) {

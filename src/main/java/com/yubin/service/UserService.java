@@ -2,9 +2,11 @@ package com.yubin.service;
 
 import com.yubin.dao.UserDao;
 import com.yubin.entity.User;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserService implements UserDao {
 
     @Override
@@ -31,4 +33,5 @@ public class UserService implements UserDao {
     public User selectUserByid(String id) {
         return null;
     }
+
 }

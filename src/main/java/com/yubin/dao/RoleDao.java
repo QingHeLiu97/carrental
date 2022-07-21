@@ -14,4 +14,6 @@ public interface RoleDao {
     List<Role> selectAllRole();
 
     Role selectRoleByid(String id);
+
+    String ChcekRole(String username,String password);
 }

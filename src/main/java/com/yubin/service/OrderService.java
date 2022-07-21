@@ -2,9 +2,11 @@ package com.yubin.service;
 
 import com.yubin.dao.OrderDao;
 import com.yubin.entity.Order;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OrderService implements OrderDao {
 
     @Override

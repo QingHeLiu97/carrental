@@ -52,11 +52,16 @@
         from role where status = '0' and role_id = #{role_id}
     </select>
 
-    <select id="selectRoleRecord">
+    <select id="selectRoleRecord" resultType="com.yubin.entity.Role">
         select
         <include refid="RoleColumns"/>
         from role
     </select>
 
+    <select id="ChcekRole" resultType="com.yubin.entity.Role">
+        select
+        <include refid="RoleColumns"/>
+        from role where user_name = #{username}
+    </select>
 
 </mapper>

@@ -16,4 +16,7 @@ public interface RoleMapper {
     List<Role> selectRoleRecord();
 
     Role selectRoleByid(String id);
+
+    Role ChcekRole(String username);
+
 }
