@@ -19,14 +19,25 @@ public class CarController {
 
     @ResponseBody
     @PostMapping("/insert")
-    public String insertCar(Car car){
+    public Object insertCar(Car car){
         return carService.insertCar(car);
     }
 
     @PostMapping("/delete")
     @ResponseBody
-    public String deleteCar(String id){
+    public Object deleteCar(String id){
         return carService.deleteCarById(id);
     }
 
+    @PostMapping("/update")
+    @ResponseBody
+    public Object updateCar(Car car){
+        return carService.updateCar(car);
+    }
+
+    @PostMapping("/list")
+    @ResponseBody
+    public Object getCarList(){
+        return carService.selectAllCar();
+    }
 }

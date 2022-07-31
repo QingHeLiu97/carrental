@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -34,6 +36,10 @@ public class Order {
     private String user_adddress;
     //经办人
     private String handlers_name;
+    //创建时间
+    private Date create_time;
+    //更新时间
+    private Date update_time;
     //状态
     private int status;
 }

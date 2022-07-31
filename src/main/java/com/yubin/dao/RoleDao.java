@@ -1,5 +1,6 @@
 package com.yubin.dao;
 import com.yubin.entity.Role;
+import com.yubin.entity.User;
 
 import java.util.List;
 
@@ -15,5 +16,5 @@ public interface RoleDao {
 
     Role selectRoleByid(String id);
 
-    String ChcekRole(String username,String password);
+    Object ChcekRole(User user);
 }

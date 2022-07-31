@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
 @MapperScan({"com.yubin.mapper"})
-//@EntityScan({"com.yubin.entity"})
 @SpringBootApplication()
 public class DemoApplication {
 

@@ -4,6 +4,7 @@
 
     <sql id="NoticeColumns">
         notice_id AS notice_id,
+        title AS title,
         content AS content,
         autor AS autor ,
         create_time AS create_time,
@@ -13,11 +14,13 @@
 
     <insert id="insertNotice" parameterType="com.yubin.entity.Notice">
         INSERT INTO notice(
+         title,
          content,
          autor,
          create_time,
          update_time
         )VALUES (
+        #{title},
         #{content},
         #{autor},
         #{create_time},
@@ -33,6 +36,7 @@
 
     <update id="updateNotice">
         update notice set
+        <if test="title !='' and title !=null " >title =#{title} ,</if>
         <if test="content !='' and content !=null " >content =#{content} ,</if>
         <if test="autor !='' and autor !=null " >autor =#{autor} ,</if>
         <if test="update_time !='' and update_time !=null " >update_time =#{update_time} </if>

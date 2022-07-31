@@ -3,7 +3,9 @@
 <mapper namespace="com.yubin.mapper.UserMapper">
     <sql id="UserColumns">
        user_id AS user_id,
+       token AS token,
        username AS username,
+       password AS password,
        sex AS sex,
        phone AS phone,
        email AS email,
@@ -24,7 +26,7 @@
          id_card,
          address,
          create_time,
-         update_time
+         update_time,
         )VALUES (
         #{username},
         #{password},
@@ -53,9 +55,23 @@
         <if test="email !='' and email !=null " >email =#{email} ,</if>
         <if test="id_card !='' and id_card !=null " >id_card =#{id_card} ,</if>
         <if test="address !='' and address !=null " >address =#{address} ,</if>
-        <if test="address !='' and address !=null " >address =#{address} ,</if>
+        <if test="token !='' and token !=null " >token =#{token} ,</if>
         <if test="update_time !='' and update_time !=null " >update_time =#{update_time} </if>
     </update>
+
+    <select id="getUserInfo" resultType="com.yubin.entity.User">
+    select
+    <include refid="UserColumns"/>
+    from user
+    where
+        <if test="username !='' and username !=null " > username =#{username}  </if>
+        <if test="password !='' and password !=null " >and password =#{password} </if>
+        <if test="sex !='' and sex !=null " > and sex =#{sex} </if>
+        <if test="phone !='' and phone !=null " >and phone =#{phone} </if>
+        <if test="email !='' and email !=null " > and email =#{email} </if>
+        <if test="id_card !='' and id_card !=null " > and id_card =#{id_card} </if>
+        <if test="address !='' and address !=null " >and address =#{address} </if>
+</select>
 
     <select id="selectAllUser" resultType="com.yubin.entity.User">
         select
@@ -74,7 +90,6 @@
         <include refid="UserColumns"/>
         from user
     </select>
-
 
 
 </mapper>

@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,6 +16,9 @@ public class User {
 
     //用户编号
     private int user_id;
+
+    private String token;
+    private String role;
     //用户名
     private String username;
     //用户密码
@@ -29,9 +34,9 @@ public class User {
     //用户地址
     private String address;
     //创建时间
-    private String create_time;
+    private Date create_time;
     //更新时间
-    private String update_time;
+    private Date update_time;
     //状态
     private int status;
 }

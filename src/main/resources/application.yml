@@ -1,15 +1,24 @@
 server:
-  port: 8001
+  port: 8080
   max-http-header-size: 102400
-
+config:
+  jwt:
+    # 加密密钥
+    secret: iwqjhda8232bjgh432[cicada-smile]
+    # token有效时长
+    expire: 36000
+    # header 名称
+    header: token
 
 spring:
+  application:
+    name: ware-jwt-token
   devtools:
     restart:
       enabled: true
   datasource:
     username: root
-    password: Root123.
+    password: 123456
     url: jdbc:mysql://localhost:3306/carrental?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource

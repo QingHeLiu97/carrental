@@ -14,12 +14,14 @@ import java.util.Date;
 public class Notice {
     //编号
     private  int notice_id;
+    //标题
+    private String title;
     //内容
     private String content;
     //发布人
     private String autor;
     //创建时间
-    private Date creat_time;
+    private Date create_time;
     //更新时间
     private Date update_time;
     //状态

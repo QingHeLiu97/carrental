@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class CarService implements CarDao {
 
-    @Autowired
+    @Autowired(required = false)
     private CarMapper carMapper;
 
     @Override
@@ -27,16 +27,17 @@ public class CarService implements CarDao {
 
     @Override
     public String updateCar(Car car) {
-        return null;
+        return JSON.toJSONString(carMapper.updateCar(car));
     }
 
     @Override
     public List<Car> selectAllCar() {
-        return null;
+
+        return carMapper.selectAllCar();
     }
 
     @Override
     public Car selectCarByid(String id) {
-        return null;
+        return carMapper.selectCarByid(id);
     }
 }

@@ -14,6 +14,8 @@
         user_phone AS user_phone,
         user_adddress AS user_adddress,
         handlers_name AS handlers_name ,
+        create_time AS create_time,
+        update_time AS update_time,
         status AS status
     </sql>
 
@@ -28,7 +30,9 @@
          username,
          user_phone,
          user_adddress,
-         handlers_name
+         handlers_name,
+         create_time,
+         update_time
         )VALUES (
         #{car_id},
         #{car_price},
@@ -39,7 +43,9 @@
         #{username},
         #{user_phone},
         #{user_adddress},
-        #{handlers_name}
+        #{handlers_name},
+        #{create_time},
+        #{update_time}
         )
     </insert>
 

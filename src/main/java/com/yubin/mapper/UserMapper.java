@@ -17,4 +17,5 @@ public interface UserMapper {
     List<User> selectUserRecord();
 
     User selectUserByid(String id);
+    User getUserInfo(User user);
 }
