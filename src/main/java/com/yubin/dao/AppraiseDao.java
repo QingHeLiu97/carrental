@@ -10,6 +10,8 @@ public interface AppraiseDao {
 
     String deleteAppraise(String appr_id);
 
+    String updateAppraise(Appraise appraise);
+
     List<Appraise> selectAllAppraise();
 
     Appraise selectAppraiseById(String appr_id);

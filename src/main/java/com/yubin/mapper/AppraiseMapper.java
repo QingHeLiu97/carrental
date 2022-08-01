@@ -1,19 +1,19 @@
 package com.yubin.mapper;
 
-import com.yubin.entity.Role;
+import com.yubin.entity.Appraise;
 
 import java.util.List;
 
 public interface AppraiseMapper {
-    int insertAppraise(Role role);
+    String insertAppraise(Appraise appraise);
 
-    int deleteAppraiseById(String id);
+    String deleteAppraiseById(String id);
 
-    int updateAppraise(Role role);
+    String updateAppraise(Appraise appraise);
 
-    List<Role> selectAllAppraise();
+    List<Appraise> selectAllAppraise();
 
-    List<Role> selectAppraiseRecord();
+    List<Appraise> selectAppraiseRecord();
 
-    Role selectAppraiseByid(String id);
+    Appraise selectAppraiseById(String id);
 }
