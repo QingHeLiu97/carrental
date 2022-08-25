@@ -3,11 +3,11 @@
 <mapper namespace="com.yubin.mapper.AppraiseMapper">
 
     <sql id="AppraiseColumns">
-        appr_id As appr_id,
+        appr_id As apprId,
         content AS content ,
-        create_by AS create_by,
-        create_time AS create_time,
-        update_time AS update_time,
+        create_by AS createBy,
+        create_time AS createTime,
+        update_time AS updateTime,
         level AS level,
         status AS status
     </sql>
@@ -22,38 +22,40 @@
         status
         )VALUES (
         #{content},
-        #{create_by},
-        #{create_time},
-        #{update_time},
+        #{createBy},
+        #{createTime},
+        #{updateTime},
         #{level},
         #{status}
         )
     </insert>
 
-    <delete id="deleteAppraiseById">
+    <update id="deleteAppraiseById">
         update appraise set
         status = "1"
-        where appr_id = #{appr_id}
-    </delete>
+        where appr_id = #{apprId}
+    </update>
 
     <update id="updateAppraise" parameterType="com.yubin.entity.Appraise">
         update appraise set
         <if test="content !='' and content !=null " >content =#{content} </if>
-        <if test="create_by !='' and create_by !=null " >create_by =#{create_by} </if>
-        <if test="update_time !='' and update_time !=null " >update_time =#{update_time} </if>
+        <if test="createBy !='' and createBy !=null " >create_by =#{createBy} </if>
+        <if test="status !='' and status !=null " >status =#{status} </if>
         <if test="level !='' and level !=null " >level =#{level} </if>
+        <if test="updateTime !=null " >update_time =#{updateTime} </if>
+        where notice_id =#{noticeId}
     </update>
 
     <select id="selectAllAppraise" resultType="com.yubin.entity.Appraise">
         select
         <include refid="AppraiseColumns" />
-         from appraise where status = '0'
+         from appraise
     </select>
 
     <select id="selectAppraiseByid" resultType="com.yubin.entity.Appraise">
         select
         <include refid="AppraiseColumns"/>
-        from appraise where status = '0' and appr_id = #{appr_id}
+        from appraise where status = '0' and appr_id = #{apprId}
     </select>
 
     <select id="selectAppraiseRecord">

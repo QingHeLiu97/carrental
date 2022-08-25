@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface OrderDao {
 
-    int insertOrder(Order order);
+    Object insertOrder(Order order);
 
-    int deleteOrder(String id);
+    Object deleteOrder(String id);
 
-    int updateOrder(Order order);
+    Object updateOrder(Order order);
 
-    List<Order> selectAllOrder();
+    Object selectAllOrder();
 
-    Order selectOrderById(String id);
+    Object selectOrderById(String id);
 }

@@ -8,7 +8,7 @@ public interface CarMapper {
 
     int insertCar(Car car);
 
-    int deleteCarById(String id);
+    int deleteCarById(String carId);
 
     int updateCar(Car car);
 

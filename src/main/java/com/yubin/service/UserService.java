@@ -1,40 +1,76 @@
 package com.yubin.service;
 
+import com.yubin.common.Result;
 import com.yubin.dao.UserDao;
 import com.yubin.entity.User;
 import com.yubin.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class UserService implements UserDao {
 
-    @Autowired
-    private UserMapper orderMapper;
-    public int insertUser(User user) {
-        return orderMapper.insertUser(user);
+    @Autowired(required = false)
+    private UserMapper userMapper;
+    public Object insertUser(User user) {
+        return userMapper.insertUser(user);
     }
 
     @Override
-    public int deleteUser(String id) {
-        return orderMapper.deleteUser(id);
+    public Object deleteUser(String userId) {
+        Result result = new Result();
+        int deleteUser = userMapper.deleteUser(userId);
+        if (deleteUser ==0){
+            return result.error();
+        }else{
+            return result.success();
+        }
     }
 
     @Override
-    public int updateUser(User user) {
-        return orderMapper.updateUser(user);
+    public Object updateUser(User user) {
+        Result result = new Result();
+        user.setUpdateTime(new Date());
+        int updateUser = userMapper.updateUser(user);
+        if (updateUser==0){
+            return result.error();
+        }else{
+            return result.success();
+        }
     }
 
     @Override
-    public List<User> selectAllUser() {
-        return orderMapper.selectAllUser();
+    public Object updatePassword(String userId) {
+        Result result = new Result();
+        User user = userMapper.selectUserByid(userId);
+        user.setUpdateTime(new Date());
+        user.setPassword("123456");
+        int updateUser = userMapper.updateUser(user);
+        if (updateUser==0){
+            return result.error();
+        }else{
+            return result.success();
+        }
+    }
+
+
+    @Override
+    public Object selectAllUser(User user,int current ,int pageSize) {
+        List<User> userList = userMapper.selectAll();
+        Result result = new Result();
+        return result.success(userList);
     }
 
     @Override
-    public User selectUserByid(String id) {
-        return orderMapper.selectUserByid(id);
+    public Object selectUserByid(String id) {
+        Result result = new Result();
+        User user = userMapper.selectUserByid(id);
+        return result.success(user);
     }
+
 
 }

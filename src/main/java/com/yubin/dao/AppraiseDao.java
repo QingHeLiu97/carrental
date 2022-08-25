@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface AppraiseDao {
 
-    String insertAppraise(Appraise appraise);
+    Object insertAppraise(Appraise appraise);
 
-    String deleteAppraise(String appr_id);
+    Object deleteAppraise(String appr_id);
 
-    String updateAppraise(Appraise appraise);
+    Object updateAppraise(Appraise appraise);
 
-    List<Appraise> selectAllAppraise();
+    Object selectAllAppraise();
 
-    Appraise selectAppraiseById(String appr_id);
+    Object selectAppraiseById(String appr_id);
 }

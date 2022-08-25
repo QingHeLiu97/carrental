@@ -1,9 +1,11 @@
 package com.yubin.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -14,18 +16,22 @@ import java.util.Date;
 public class Role {
 
     //编号
-    private int role_id;
+    private int roleId;
     //用户id
-    private String user_id;
+    private String userId;
     //用户名
-    private String user_name;
+    private String userName;
     //角色
     private String role;
     //创建时间
-    private Date create_time;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createTime;
     //更新时间
-    private Date update_time;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updateTime;
     //状态
-    private int status;
+    private String status;
 
 }

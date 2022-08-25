@@ -8,14 +8,16 @@ public interface UserMapper {
 
     int insertUser(User user);
 
-    int deleteUser(String id);
+    int deleteUser(String userId);
 
     int updateUser(User user);
 
-    List<User> selectAllUser();
+    List<User> selectAll();
+    List<User> getListSize();
+    List<User> selectAllUser(int leftPage, int rightPage);
 
     List<User> selectUserRecord();
 
-    User selectUserByid(String id);
+    User selectUserByid(String userId);
     User getUserInfo(User user);
 }

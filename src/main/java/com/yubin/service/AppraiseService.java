@@ -1,11 +1,13 @@
 package com.yubin.service;
 
+import com.yubin.common.Result;
 import com.yubin.dao.AppraiseDao;
 import com.yubin.entity.Appraise;
 import com.yubin.mapper.AppraiseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -16,27 +18,59 @@ public class AppraiseService implements AppraiseDao {
 
 
     @Override
-    public String insertAppraise(Appraise appraise) {
-        return appraiseMapper.insertAppraise(appraise);
+    public Object insertAppraise(Appraise appraise) {
+        int i = appraiseMapper.insertAppraise(appraise);
+        if (i == 0){
+            return new Result().error();
+        }else{
+            return new Result().success();
+        }
     }
 
     @Override
-    public String deleteAppraise(String appr_id) {
-        return appraiseMapper.deleteAppraiseById(appr_id);
+    public Object deleteAppraise(String apprId) {
+        Result result = new Result();
+        int i  = appraiseMapper.deleteAppraiseById(apprId);
+        if (i == 0){
+            return result.error();
+        }else{
+            return result.success();
+        }
+
     }
 
     @Override
-    public String updateAppraise(Appraise appraise) {
-        return appraiseMapper.updateAppraise(appraise);
+    public Object updateAppraise(Appraise appraise) {
+        Result result = new Result();
+        appraise.setUpdateTime(new Date());
+        int i =  appraiseMapper.updateAppraise(appraise);
+        if (i ==0){
+            return result.error();
+        }else{
+            return result.success();
+        }
     }
 
     @Override
-    public List<Appraise> selectAllAppraise() {
-        return appraiseMapper.selectAllAppraise();
+    public Object selectAllAppraise() {
+        Result result = new Result();
+        List<Appraise> appraiseList =  appraiseMapper.selectAllAppraise();
+        if (appraiseList.size()>0){
+            return result.success(appraiseList);
+        }else{
+            return result.error();
+        }
     }
 
     @Override
-    public Appraise selectAppraiseById(String appr_id) {
-        return appraiseMapper.selectAppraiseById(appr_id);
+    public Object selectAppraiseById(String apprId) {
+        Result result = new Result();
+        Appraise appraise = appraiseMapper.selectAppraiseById(apprId);
+        if (appraise!=null){
+            return result.success(appraise);
+        }else{
+            return result.error();
+        }
+
     }
 }

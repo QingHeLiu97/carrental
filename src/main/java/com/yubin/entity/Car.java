@@ -1,10 +1,12 @@
 package com.yubin.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -15,7 +17,7 @@ import java.util.Date;
 public class Car {
 
     //汽车编号
-    private int car_id;
+    private int carId;
     //类型
     private String type;
     //颜色
@@ -27,9 +29,13 @@ public class Car {
     //车名
     private String carname;
     //创建时间
-    private Date create_time;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createTime;
     //更新时间
-    private Date  update_time;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date  updateTime;
     //状态
-    private int status;
+    private String status;
 }

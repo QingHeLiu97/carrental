@@ -2,6 +2,7 @@ package com.yubin.controller;
 
 import com.yubin.entity.User;
 import com.yubin.service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,8 +24,8 @@ public class UserController {
 
     @PostMapping("/delete")
     @ResponseBody
-    public Object deleteUser(String id){
-        return userService.deleteUser(id) ;
+    public Object deleteUser(@Param("userId") String userId){
+        return userService.deleteUser(userId) ;
     }
 
     @PostMapping("/update")
@@ -35,7 +36,32 @@ public class UserController {
 
     @PostMapping("/list")
     @ResponseBody
-    public Object User(){
-        return userService.selectAllUser() ;
+    public Object User(Integer current,
+                       Integer pageSize,
+                       String role,
+                       String name,
+                       String phone,
+                       String idCard,
+                       String status){
+        User user =new User();
+        if (name !=null){
+            user.setUsername(name);
+        }
+        if (phone!=null){
+            user.setPhone(phone);
+        }
+        if (idCard!=null){
+            user.setIdCard(idCard);
+        }
+        if (status!=null){
+            user.setStatus(status);
+        }
+        return userService.selectAllUser(user,current, pageSize) ;
+    }
+
+    @PostMapping("/updatePassword")
+    @ResponseBody
+    public Object updatePassword(@Param("userId") String userId){
+        return userService.updatePassword(userId) ;
     }
 }

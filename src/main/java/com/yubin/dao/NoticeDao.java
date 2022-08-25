@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface NoticeDao {
 
-    int insertNotice(Notice notice);
+    Object insertNotice(Notice notice);
 
-    int deleteNotice(String id);
+    Object deleteNotice(String id);
 
-    int updateNotice(Notice notice);
+    Object updateNotice(Notice notice);
 
-    List<Notice> selectAllNotice();
+    Object selectAllNotice();
 
-    Notice selectNoticeById(String id);
+    Object selectNoticeById(String id);
 }

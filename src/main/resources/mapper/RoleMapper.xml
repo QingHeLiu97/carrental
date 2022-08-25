@@ -3,12 +3,12 @@
 <mapper namespace="com.yubin.mapper.RoleMapper">
 
     <sql id="RoleColumns">
-       role_id AS role_id,
-       user_id AS user_id,
-       user_name AS user_name,
+       role_id AS roleId,
+       user_id AS userId,
+       user_name AS userName,
        role AS role,
-       create_time AS create_time,
-       update_time AS update_time ,
+       create_time AS createTime,
+       update_time AS updateTime ,
         status AS status
     </sql>
 
@@ -21,23 +21,23 @@
         )VALUES (
         #{content},
         #{autor}
-        #{create_time}
-        #{update_time}
+        #{createTime}
+        #{updateTime}
         )
     </insert>
 
     <delete id="deleteRoleById">
     update  role set
     status = "1"
-    where role_id =#{role_id}
+    where role_id =#{roleId}
     </delete>
 
     <update id="updateRole">
         update role set
-        <if test="user_id !='' and user_id !=null " >user_id =#{user_id} ,</if>
-        <if test="user_name !='' and user_name !=null " >user_name =#{user_name}, </if>
+        <if test="userId !='' and userId !=null " >user_id =#{userId} ,</if>
+        <if test="userName !='' and userName !=null " >user_name =#{userName}, </if>
         <if test="role !='' and role !=null " >role =#{role} ,</if>
-        <if test="update_time !='' and update_time !=null " >update_time =#{update_time} </if>
+        <if test="updateTime !='' and updateTime !=null " >update_time =#{updateTime} </if>
     </update>
 
     <select id="selectAllRole" resultType="com.yubin.entity.Role">
@@ -49,7 +49,7 @@
     <select id="selectRoleByid" resultType="com.yubin.entity.Role">
         select
         <include refid="RoleColumns"/>
-        from role where status = '0' and role_id = #{role_id}
+        from role where status = '0' and role_id = #{roleId}
     </select>
 
     <select id="selectRoleRecord" resultType="com.yubin.entity.Role">

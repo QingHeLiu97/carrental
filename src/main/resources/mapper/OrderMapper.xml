@@ -3,24 +3,24 @@
 <mapper namespace="com.yubin.mapper.OrderMapper">
 
     <sql id="OrderColumns">
-        order_id AS order_id,
-        car_id AS  car_id,
-        car_price AS car_price,
-        car_type AS car_type,
-        car_color AS car_color,
+        order_id AS orderId,
+        car_id AS  carId,
+        car_price AS carPrice,
+        car_type AS carType,
+        car_color AS carColor,
         deposit AS deposit,
-        user_id AS user_id,
+        user_id AS userId,
         username AS username,
-        user_phone AS user_phone,
-        user_adddress AS user_adddress,
-        handlers_name AS handlers_name ,
-        create_time AS create_time,
-        update_time AS update_time,
+        user_phone AS userPhone,
+        user_address AS userAddress,
+        handlers_name AS handlersName ,
+        create_time AS createTime,
+        update_time AS updateTime,
         status AS status
     </sql>
 
     <insert id="insertOrder" parameterType="com.yubin.entity.Order">
-        INSERT INTO order(
+        INSERT INTO orderes(
          car_id,
          car_price,
          car_type,
@@ -29,62 +29,65 @@
          user_id,
          username,
          user_phone,
-         user_adddress,
+         user_address,
          handlers_name,
          create_time,
          update_time
         )VALUES (
-        #{car_id},
-        #{car_price},
-        #{car_type},
-        #{car_color},
+        #{carId},
+        #{carPrice},
+        #{carType},
+        #{carColor},
         #{deposit},
-        #{user_id},
+        #{userId},
         #{username},
-        #{user_phone},
-        #{user_adddress},
-        #{handlers_name},
-        #{create_time},
-        #{update_time}
+        #{userPhone},
+        #{userAddress},
+        #{handlersName},
+        #{createTime},
+        #{updateTime}
         )
     </insert>
 
-    <delete id="deleteOrder">
-    update  order set
+    <update id="deleteOrder">
+    update  orderes set
     status = "1"
-    where order_id =#{order_id}
-    </delete>
+    where order_id =#{orderId}
+    </update>
 
     <update id="updateOrder">
-        update order set
-        <if test="car_id !='' and car_id !=null " >car_id =#{car_id} ,</if>
-        <if test="car_price !='' and car_price !=null " >car_price =#{car_price}, </if>
-       <if test="car_type !='' and car_type !=null " >car_type =#{car_type} ,</if>
-       <if test="car_color !='' and car_color !=null " >car_color =#{car_color} ,</if>
+        update orderes set
+        <if test="carId !='' and carId !=null " >car_id =#{carId} ,</if>
+        <if test="carPrice !='' and carPrice !=null " >car_price =#{carPrice}, </if>
+       <if test="carType !='' and carType !=null " >car_type =#{carType} ,</if>
+       <if test="carColor !='' and carColor !=null " >car_color =#{carColor} ,</if>
        <if test="deposit !='' and deposit !=null " >deposit =#{deposit} ,</if>
-       <if test="user_id !='' and user_id !=null " >user_id =#{user_id} ,</if>
+       <if test="userId !='' and userId !=null " >user_id =#{userId} ,</if>
        <if test="username !='' and username !=null " >username =#{username} ,</if>
-       <if test="user_phone !='' and user_phone !=null " >user_phone =#{user_phone} ,</if>
-       <if test="user_adddress !='' and user_adddress !=null " >user_adddress =#{user_adddress} ,</if>
-       <if test="handlers_name !='' and handlers_name !=null " >handlers_name =#{handlers_name} ,</if>
+       <if test="userPhone !='' and userPhone !=null " >user_phone =#{userPhone} ,</if>
+       <if test="userAddress !='' and userAddress !=null " >user_address =#{userAddress} ,</if>
+       <if test="handlersName !='' and handlersName !=null " >handlers_name =#{handlersName} ,</if>
+       <if test="status !='' and status !=null " >status =#{status} ,</if>
+       <if test="updateTime !=null " >update_time =#{updateTime} </if>
+       where order_id =#{orderId}
     </update>
 
     <select id="selectAllOrder" resultType="com.yubin.entity.Order">
         select
         <include refid="OrderColumns"/>
-        from order where status = '0'
+        from orderes
     </select>
 
     <select id="selectOrderById" resultType="com.yubin.entity.Order">
         select
         <include refid="OrderColumns"/>
-        from order where status = '0' and order_id = #{order_id}
+        from orderes where status = '0' and order_id = #{order_id}
     </select>
 
     <select id="selectOrderRecord">
         select
         <include refid="OrderColumns"/>
-        from order
+        from orderes
     </select>
 
 </mapper>

@@ -5,11 +5,11 @@ import com.yubin.entity.Appraise;
 import java.util.List;
 
 public interface AppraiseMapper {
-    String insertAppraise(Appraise appraise);
+    int insertAppraise(Appraise appraise);
 
-    String deleteAppraiseById(String id);
+    int deleteAppraiseById(String id);
 
-    String updateAppraise(Appraise appraise);
+    int updateAppraise(Appraise appraise);
 
     List<Appraise> selectAllAppraise();
 

@@ -3,14 +3,14 @@
 <mapper namespace="com.yubin.mapper.CarMapper">
 
     <sql id="CarColumns">
-        car_id As car_id,
+        car_id As carId,
         type AS type ,
         color AS color,
         price AS price,
         deposit AS deposit,
         carname AS carname,
-        create_time AS create_time,
-        update_time AS update_time,
+        create_time AS createTime,
+        update_time AS updateTime,
         status AS status
     </sql>
 
@@ -28,38 +28,39 @@
         #{price},
         #{deposit},
         #{carname},
-        #{create_time},
-        #{update_time}
+        #{createTime},
+        #{updateTime}
         )
     </insert>
 
-    <delete id="deleteCarById">
+    <update id="deleteCarById">
         update car set
         status = "1"
-        where car_id = #{car_id}
-    </delete>
+        where car_id = #{carId}
+    </update>
 
-    <update id="updateCar" parameterType="com.yubin.entity.Car">
+    <update id="updateCar">
         update car set
-        <if test="type !='' and type !=null " >type =#{type} </if>
-        <if test="color !='' and color !=null " >color =#{color} </if>
-        <if test="price !='' and price !=price " >price =#{price} </if>
-        <if test="deposit !='' and deposit !=null " >deposit =#{deposit} </if>
-        <if test="carname !='' and carname !=null " >carname =#{carname} </if>
-        <if test="create_time !='' and create_time !=null " >create_time =#{create_time} </if>
-        <if test="update_time !='' and update_time !=null " >update_time =#{update_time} </if>
+        <if test="type !='' and type !=null " > type =#{type}, </if>
+        <if test="color !='' and color !=null " >color =#{color} ,</if>
+        <if test="price !='' and price !=null ">price =#{price}, </if>
+        <if test="deposit !='' and deposit !=null " >deposit =#{deposit}, </if>
+        <if test="carname !='' and carname !=null " >carname =#{carname}, </if>
+        <if test="status !='' and status !=null " >status =#{status}, </if>
+        <if test="updateTime !=null " >update_time =#{updateTime} </if>
+        where car_id = #{carId}
     </update>
 
     <select id="selectAllCar" resultType="com.yubin.entity.Car">
         select
         <include refid="CarColumns" />
-         from car where status = '0'
+         from car
     </select>
 
     <select id="selectCarByid" resultType="com.yubin.entity.Car">
         select
         <include refid="CarColumns"/>
-        from car where status = '0' and car_id = #{car_id}
+        from car where status = '0' and car_id = #{carId}
     </select>
 
     <select id="selectCarRecord">

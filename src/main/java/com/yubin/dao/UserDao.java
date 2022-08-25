@@ -6,13 +6,15 @@ import java.util.List;
 
 public interface UserDao {
 
-    int insertUser(User user);
+    Object insertUser(User user);
 
-    int deleteUser(String id);
+    Object deleteUser(String id);
 
-    int updateUser(User user);
+    Object updateUser(User user);
 
-    List<User> selectAllUser();
+    Object updatePassword(String  userId);
 
-    User selectUserByid(String id);
+    Object selectAllUser(User user,int current ,int limit);
+
+    Object selectUserByid(String id);
 }

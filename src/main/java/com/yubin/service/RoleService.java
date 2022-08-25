@@ -22,27 +22,42 @@ public class RoleService implements RoleDao {
     private RoleMapper roleMapper;
 
     @Override
-    public int insertRole(Role role) {
-        return 0;
+    public Object insertRole(Role role) {
+        int i = roleMapper.insertRole(role);
+        if (i==0){
+            return new Result().error("添加失败，请重试！");
+        }else{
+            return new Result().success("添加成功！");
+        }
     }
 
     @Override
-    public int deleteRoleById(String id) {
-        return 0;
+    public Object deleteRoleById(String id) {
+        int i = roleMapper.deleteRoleById(id);
+        if (i == 0){
+            return new Result().error("删除失败，请重试!");
+        }else{
+            return new Result().success("删除成功，请重试！");
+        }
     }
 
     @Override
-    public int updateRole(Role role) {
-        return 0;
+    public Object updateRole(Role role) {
+        int i = roleMapper.updateRole(role);
+        if (i== 0){
+            return new Result().error("更新失败，请重试！");
+        }else{
+            return new Result().success("更新成功!");
+        }
     }
 
     @Override
-    public List<Role> selectAllRole() {
+    public Object selectAllRole() {
         return null;
     }
 
     @Override
-    public Role selectRoleByid(String id) {
+    public Object selectRoleByid(String id) {
         return null;
     }
 
@@ -65,7 +80,7 @@ public class RoleService implements RoleDao {
 
     public String getToken(User user) {
         String token="";
-        token= JWT.create().withAudience(String.valueOf(user.getUser_id())).sign(Algorithm.HMAC256(user.getPassword()));
+        token= JWT.create().withAudience(String.valueOf(user.getUserId())).sign(Algorithm.HMAC256(user.getPassword()));
         return token;
     }
 }

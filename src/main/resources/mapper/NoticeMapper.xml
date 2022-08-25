@@ -3,13 +3,13 @@
 <mapper namespace="com.yubin.mapper.NoticeMapper">
 
     <sql id="NoticeColumns">
-        notice_id AS notice_id,
+        notice_id AS noticeId,
         title AS title,
         content AS content,
         autor AS autor ,
-        create_time AS create_time,
-        update_time AS update_time,
-        status AS stauts
+        create_time AS createTime,
+        update_time AS updateTime,
+        status AS status
     </sql>
 
     <insert id="insertNotice" parameterType="com.yubin.entity.Notice">
@@ -23,35 +23,37 @@
         #{title},
         #{content},
         #{autor},
-        #{create_time},
-        #{update_time}
+        #{createTime},
+        #{updateTime}
         )
     </insert>
 
-    <delete id="deleteNotice">
+    <update id="deleteNotice">
     update  notice set
     status = "1"
-    where notice_id =#{notice_id}
-    </delete>
+    where notice_id =#{noticeId}
+    </update>
 
     <update id="updateNotice">
         update notice set
         <if test="title !='' and title !=null " >title =#{title} ,</if>
         <if test="content !='' and content !=null " >content =#{content} ,</if>
         <if test="autor !='' and autor !=null " >autor =#{autor} ,</if>
-        <if test="update_time !='' and update_time !=null " >update_time =#{update_time} </if>
+        <if test="status !='' and status !=null " >status =#{status} ,</if>
+        <if test="updateTime !=null " >update_time =#{updateTime} </if>
+        where notice_id = #{noticeId}
     </update>
 
     <select id="selectAllNotice" resultType="com.yubin.entity.Notice">
         select
         <include refid="NoticeColumns"/>
-        from notice where status = '0'
+        from notice
     </select>
 
     <select id="selectNoticeById" resultType="com.yubin.entity.Notice">
         select
         <include refid="NoticeColumns"/>
-        from notice where status = '0' and notice_id = #{notice_id}
+        from notice where status = '0' and notice_id = #{noticeId}
     </select>
 
     <select id="selectNoticeRecord">

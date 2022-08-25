@@ -6,15 +6,15 @@ import java.util.List;
 
 public interface RoleDao {
 
-    int insertRole(Role role);
+    Object insertRole(Role role);
 
-    int deleteRoleById(String id);
+    Object deleteRoleById(String id);
 
-    int updateRole(Role role);
+    Object updateRole(Role role);
 
-    List<Role> selectAllRole();
+    Object selectAllRole();
 
-    Role selectRoleByid(String id);
+    Object selectRoleByid(String id);
 
     Object ChcekRole(User user);
 }

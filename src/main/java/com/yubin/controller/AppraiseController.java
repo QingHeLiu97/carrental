@@ -2,6 +2,7 @@ package com.yubin.controller;
 
 import com.yubin.entity.Appraise;
 import com.yubin.service.AppraiseService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,8 +25,8 @@ public class AppraiseController {
 
     @PostMapping("/delete")
     @ResponseBody
-    public Object deleteAppraise(String id){
-        return appraiseService.deleteAppraise(id);
+    public Object deleteAppraise(@Param("apprId") String apprId){
+        return appraiseService.deleteAppraise(apprId);
     }
 
     @PostMapping("/update")
