@@ -22,8 +22,8 @@ public class OrderService implements OrderDao {
     }
 
     @Override
-    public Object deleteOrder(String id) {
-        int i =  orderMapper.deleteOrder(id);
+    public Object deleteOrder(String orderId) {
+        int i =  orderMapper.deleteOrder(orderId);
         if (i == 0){
             return  new Result().error("删除失败，请重试！");
         }else{

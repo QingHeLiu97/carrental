@@ -17,4 +17,6 @@ public interface CarMapper {
     List<Car> selectCarRecord();
 
     Car selectCarByid(String id);
+
+    List<Car> selectCarByPhone(String phone);
 }

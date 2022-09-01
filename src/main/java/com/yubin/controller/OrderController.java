@@ -23,8 +23,8 @@ public class OrderController {
 
     @PostMapping("/delete")
     @ResponseBody
-    public Object deleteOrder(String id){
-        return orderService.deleteOrder(id);
+    public Object deleteOrder(String orderId){
+        return orderService.deleteOrder(orderId);
     }
 
     @PostMapping("/update")

@@ -25,7 +25,7 @@ public class User  extends BaseEntity{
     //用户密码
     private String password;
     //用户性别
-    private int sex;
+    private String sex;
     //用户号码
     private String phone;
     //用户邮箱

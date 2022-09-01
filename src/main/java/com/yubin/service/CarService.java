@@ -8,6 +8,7 @@ import com.yubin.mapper.CarMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -54,10 +55,16 @@ public class CarService implements CarDao {
     }
 
     @Override
-    public Object selectAllCar() {
+    public Object selectAllCar(String roles,String phone) {
         Result result = new Result();
-        List<Car> carList = carMapper.selectAllCar();
-        if (carList.size() > 0){
+        List<Car> carList = new ArrayList<>();
+        if (phone ==null){
+            carList = carMapper.selectAllCar();
+        }else{
+            carList = carMapper.selectCarByPhone(phone);
+        }
+
+        if (carList.size() > 0 ){
             return result.success(carList);
         }else{
             return result.error();

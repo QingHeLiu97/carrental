@@ -9,6 +9,7 @@
         price AS price,
         deposit AS deposit,
         carname AS carname,
+        user_phone AS userPhone,
         create_time AS createTime,
         update_time AS updateTime,
         status AS status
@@ -19,6 +20,7 @@
         type,
         color,
         price,
+        user_phone,
         deposit,
         carname,
         create_time,
@@ -26,6 +28,7 @@
         )VALUES (
         #{color},
         #{price},
+        #{userPhone},
         #{deposit},
         #{carname},
         #{createTime},
@@ -44,6 +47,7 @@
         <if test="type !='' and type !=null " > type =#{type}, </if>
         <if test="color !='' and color !=null " >color =#{color} ,</if>
         <if test="price !='' and price !=null ">price =#{price}, </if>
+        <if test="userPhone !='' and userPhone !=null ">user_phone =#{userPhone}, </if>
         <if test="deposit !='' and deposit !=null " >deposit =#{deposit}, </if>
         <if test="carname !='' and carname !=null " >carname =#{carname}, </if>
         <if test="status !='' and status !=null " >status =#{status}, </if>
@@ -56,16 +60,20 @@
         <include refid="CarColumns" />
          from car
     </select>
-
     <select id="selectCarByid" resultType="com.yubin.entity.Car">
         select
         <include refid="CarColumns"/>
         from car where status = '0' and car_id = #{carId}
     </select>
 
-    <select id="selectCarRecord">
+    <select id="selectCarRecord" resultType="com.yubin.entity.Car">
         select
         <include refid="CarColumns"/>
         from car
+    </select>
+    <select id="selectCarByPhone" resultType="com.yubin.entity.Car">
+        select
+        <include refid="CarColumns" />
+        from car where user_phone = #{phone}
     </select>
 </mapper>

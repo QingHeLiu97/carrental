@@ -28,8 +28,8 @@ public class NoticeService implements NoticeDao {
     }
 
     @Override
-    public Object deleteNotice(String id) {
-        int i = noticeMapper.deleteNotice(id);
+    public Object deleteNotice(String noticeId) {
+        int i = noticeMapper.deleteNotice(noticeId);
         if (i == 0){
             return new Result().error("删除失败，请重试!");
         }else{

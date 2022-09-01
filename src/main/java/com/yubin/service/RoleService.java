@@ -69,10 +69,15 @@ public class RoleService implements RoleDao {
             result.error("500","账号或密码不正确");
         }else{
             Role role = roleMapper.ChcekRole(user.getUsername());
-            userInfo.setRole(role.getRole());
-            if (userInfo.getToken() == null) {
-                userInfo.setToken(getToken(userInfo));
+            if(role==null){
+                return result.error("请检查用户账号或密码是否正确");
+            }else{
+                userInfo.setRole(role.getRole());
+                if (userInfo.getToken() == null) {
+                    userInfo.setToken(getToken(userInfo));
+                }
             }
+
 
         }
         return result.success(userInfo);

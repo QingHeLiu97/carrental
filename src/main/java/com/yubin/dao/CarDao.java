@@ -12,7 +12,7 @@ public interface CarDao {
 
     Object updateCar(Car car);
 
-    Object selectAllCar();
+    Object selectAllCar(String role,String phone);
 
     Object selectCarByid(String id);
 }

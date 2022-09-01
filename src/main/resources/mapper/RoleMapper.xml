@@ -60,7 +60,7 @@
 
     <select id="ChcekRole" resultType="com.yubin.entity.Role">
         select
-        <include refid="RoleColumns"/>
+        *
         from role where user_name = #{username}
     </select>
 

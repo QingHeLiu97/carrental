@@ -25,8 +25,8 @@ public class CarController {
 
     @PostMapping("/delete")
     @ResponseBody
-    public Object deleteCar(String id){
-        return carService.deleteCarById(id);
+    public Object deleteCar(String carId){
+        return carService.deleteCarById(carId);
     }
 
     @PostMapping("/update")
@@ -37,7 +37,7 @@ public class CarController {
 
     @PostMapping("/list")
     @ResponseBody
-    public Object getCarList(){
-        return carService.selectAllCar();
+    public Object getCarList(String roles,String phone){
+        return carService.selectAllCar(roles,phone);
     }
 }

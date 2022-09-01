@@ -24,8 +24,8 @@ public class NoticeController {
 
     @PostMapping("/delete")
     @ResponseBody
-    public Object deleteCar(String id){
-        return noticeService.deleteNotice(id);
+    public Object deleteCar(String noticeId){
+        return noticeService.deleteNotice(noticeId);
     }
 
     @PostMapping("/update")
