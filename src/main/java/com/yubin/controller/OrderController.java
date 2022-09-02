@@ -37,4 +37,10 @@ public class OrderController {
     public Object getOrderList(){
         return orderService.selectAllOrder();
     }
+
+    @PostMapping("/getOrderByPhone")
+    @ResponseBody
+    public Object getOrderByPhone(String phone){
+        return orderService.getOrderByPhone(phone);
+    }
 }

@@ -37,7 +37,7 @@ public class AppraiseController {
 
     @PostMapping("/list")
     @ResponseBody
-    public Object getAppraise(){
-        return appraiseService.selectAllAppraise() ;
+    public Object getAppraise(String role,String phone){
+        return appraiseService.selectAllAppraise(role,phone) ;
     }
 }

@@ -12,7 +12,7 @@ public interface AppraiseDao {
 
     Object updateAppraise(Appraise appraise);
 
-    Object selectAllAppraise();
+    Object selectAllAppraise(String role,String phone);
 
     Object selectAppraiseById(String appr_id);
 }

@@ -14,5 +14,7 @@ public interface OrderDao {
 
     Object selectAllOrder();
 
+    Object getOrderByPhone(String phone);
+
     Object selectOrderById(String id);
 }

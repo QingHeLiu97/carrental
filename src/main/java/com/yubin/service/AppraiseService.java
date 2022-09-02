@@ -7,6 +7,7 @@ import com.yubin.mapper.AppraiseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -52,9 +53,16 @@ public class AppraiseService implements AppraiseDao {
     }
 
     @Override
-    public Object selectAllAppraise() {
+    public Object selectAllAppraise(String role ,String phone) {
         Result result = new Result();
-        List<Appraise> appraiseList =  appraiseMapper.selectAllAppraise();
+        List<Appraise> appraiseList = new ArrayList<>();
+        if (role.equals("admin")){
+            appraiseList =  appraiseMapper.selectAllAppraise();
+        }else{
+            appraiseList = appraiseMapper.selectAppraiseByPhone(phone);
+        }
+
+
         if (appraiseList.size()>0){
             return result.success(appraiseList);
         }else{

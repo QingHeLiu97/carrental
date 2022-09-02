@@ -84,10 +84,10 @@
         from orderes where status = '0' and order_id = #{order_id}
     </select>
 
-    <select id="selectOrderRecord">
+    <select id="getOrderByPhone" resultType="com.yubin.entity.Order">
         select
         <include refid="OrderColumns"/>
-        from orderes
+        from orderes where phone = #{phone} and status = '0'
     </select>
 
 </mapper>

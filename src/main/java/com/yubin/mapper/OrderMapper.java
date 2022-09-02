@@ -13,6 +13,7 @@ public interface OrderMapper {
     int updateOrder(Order order);
 
     List<Order> selectAllOrder();
+    List<Order> getOrderByPhone(String phone);
 
     List<Order> selectOrderRecord();
 

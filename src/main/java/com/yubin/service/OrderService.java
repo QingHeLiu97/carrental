@@ -61,4 +61,14 @@ public class OrderService implements OrderDao {
             return new Result().success(order);
         }
     }
+
+    @Override
+    public Object getOrderByPhone(String phone) {
+        List<Order> orderList = orderMapper.getOrderByPhone(phone);
+        if (orderList.size() > 0){
+            return new Result().success(orderList);
+        }else{
+            return new Result().error("查找失败,该订单不存在");
+        }
+    }
 }

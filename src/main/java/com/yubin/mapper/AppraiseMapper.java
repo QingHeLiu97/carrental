@@ -13,7 +13,7 @@ public interface AppraiseMapper {
 
     List<Appraise> selectAllAppraise();
 
-    List<Appraise> selectAppraiseRecord();
+    List<Appraise> selectAppraiseByPhone(String phone);
 
     Appraise selectAppraiseById(String id);
 }
