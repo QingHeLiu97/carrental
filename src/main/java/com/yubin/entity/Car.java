@@ -30,6 +30,8 @@ public class Car {
     private String carname;
     //车主联系方式
     private String userPhone;
+    //汽车图片
+    private String carCircle;
     //创建时间
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

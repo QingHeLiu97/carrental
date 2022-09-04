@@ -34,8 +34,8 @@ public class OrderController {
     }
     @PostMapping("/list")
     @ResponseBody
-    public Object getOrderList(){
-        return orderService.selectAllOrder();
+    public Object getOrderList( String role , String phone){
+        return orderService.selectAllOrder(role,phone);
     }
 
     @PostMapping("/getOrderByPhone")

@@ -7,10 +7,15 @@ import com.yubin.entity.Car;
 import com.yubin.mapper.CarMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class CarService implements CarDao {
@@ -19,9 +24,16 @@ public class CarService implements CarDao {
     private CarMapper carMapper;
 
     @Override
-    public Object insertCar(Car car) {
+    public Object insertCar( String role,String phone , Car car) {
         Result result = new Result();
-        int i = carMapper.insertCar(car);
+        int i = 0;
+        if (role.equals("admin")){
+            carMapper.insertCar(car);
+        }else{
+            car.setUserPhone(phone);
+            car.setCreateTime(new Date());
+            carMapper.insertCar(car);
+        }
         if (i == 0){
             return result.error();
         }else{

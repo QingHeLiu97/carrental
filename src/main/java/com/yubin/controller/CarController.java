@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/car")
@@ -19,8 +20,8 @@ public class CarController {
 
     @ResponseBody
     @PostMapping("/insert")
-    public Object insertCar(Car car){
-        return carService.insertCar(car);
+    public Object insertCar(String role,String phone , Car car){
+        return carService.insertCar(role, phone, car);
     }
 
     @PostMapping("/delete")

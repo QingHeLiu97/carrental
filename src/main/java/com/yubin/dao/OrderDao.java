@@ -12,7 +12,7 @@ public interface OrderDao {
 
     Object updateOrder(Order order);
 
-    Object selectAllOrder();
+    Object selectAllOrder(String role  ,String phone);
 
     Object getOrderByPhone(String phone);
 

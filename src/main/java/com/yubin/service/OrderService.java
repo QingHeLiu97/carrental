@@ -7,6 +7,7 @@ import com.yubin.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -43,8 +44,13 @@ public class OrderService implements OrderDao {
     }
 
     @Override
-    public Object selectAllOrder() {
-        List<Order> orderList = orderMapper.selectAllOrder();
+    public Object selectAllOrder(String role ,String phone) {
+        List<Order> orderList = new ArrayList<>();
+        if (role.equals("admin")){
+           orderList = orderMapper.selectAllOrder();
+        }else {
+            orderList = orderMapper.getOrderByPhone(phone);
+        }
         if (orderList.size()>0){
             return new Result().success(orderList);
         }else{

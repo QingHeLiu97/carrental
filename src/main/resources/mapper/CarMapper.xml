@@ -10,19 +10,21 @@
         deposit AS deposit,
         carname AS carname,
         user_phone AS userPhone,
+        car_circle AS carCircle,
         create_time AS createTime,
         update_time AS updateTime,
         status AS status
     </sql>
 
     <insert id="insertCar" >
-        INSET INTO car(
+        insert INTO car(
         type,
         color,
         price,
         user_phone,
         deposit,
         carname,
+        car_circle,
         create_time,
         update_time
         )VALUES (
@@ -31,6 +33,7 @@
         #{userPhone},
         #{deposit},
         #{carname},
+        #{carCircle},
         #{createTime},
         #{updateTime}
         )
@@ -50,6 +53,7 @@
         <if test="userPhone !='' and userPhone !=null ">user_phone =#{userPhone}, </if>
         <if test="deposit !='' and deposit !=null " >deposit =#{deposit}, </if>
         <if test="carname !='' and carname !=null " >carname =#{carname}, </if>
+        <if test="carCircle !='' and carCircle !=null " >car_circle =#{carCircle}, </if>
         <if test="status !='' and status !=null " >status =#{status}, </if>
         <if test="updateTime !=null " >update_time =#{updateTime} </if>
         where car_id = #{carId}
