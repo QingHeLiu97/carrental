@@ -8,6 +8,7 @@ import org.aspectj.weaver.ast.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,8 +50,14 @@ public class NoticeService implements NoticeDao {
     }
 
     @Override
-    public Object selectAllNotice() {
-        List<Notice> notices = noticeMapper.selectAllNotice();
+    public Object selectAllNotice(String role) {
+        List<Notice> notices = new ArrayList<>();
+        if (role.equals("user")){
+            notices = noticeMapper.selectNoticeByUser();
+        }else{
+            notices = noticeMapper.selectAllNotice();
+        }
+
         if (notices.size()>0){
             return new Result().success(notices);
         }else{

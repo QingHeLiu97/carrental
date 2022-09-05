@@ -35,13 +35,13 @@ public class NoticeController {
     }
     @PostMapping("/list")
     @ResponseBody
-    public Object getCarList(){
-        return noticeService.selectAllNotice();
+    public Object getCarList(String role){
+        return noticeService.selectAllNotice(role);
     }
 
-    @PostMapping("/page")
-    @ResponseBody
-    public Object getCarListPage(){
-        return noticeService.selectAllNotice();
-    }
+//    @PostMapping("/page")
+//    @ResponseBody
+//    public Object getCarListPage(){
+//        return noticeService.selectAllNotice();
+//    }
 }

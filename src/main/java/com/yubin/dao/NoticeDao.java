@@ -12,7 +12,7 @@ public interface NoticeDao {
 
     Object updateNotice(Notice notice);
 
-    Object selectAllNotice();
+    Object selectAllNotice(String role);
 
     Object selectNoticeById(String id);
 }

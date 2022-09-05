@@ -14,7 +14,7 @@ public interface NoticeMapper {
 
     List<Notice> selectAllNotice();
 
-    List<Notice> selectNoticeRecord();
+    List<Notice> selectNoticeByUser();
 
     Notice selectNoticeById(String id);
 }

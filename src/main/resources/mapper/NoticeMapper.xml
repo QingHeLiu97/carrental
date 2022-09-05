@@ -56,10 +56,10 @@
         from notice where status = '0' and notice_id = #{noticeId}
     </select>
 
-    <select id="selectNoticeRecord">
+    <select id="selectNoticeByUser" resultType="com.yubin.entity.Notice">
         select
-        <include refid="NoticeColumns"/>
-        from notice
+       *
+        from notice where status = '0'
     </select>
 
 </mapper>

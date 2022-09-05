@@ -2,7 +2,9 @@ package com.yubin.service;
 
 import com.yubin.common.Result;
 import com.yubin.dao.UserDao;
+import com.yubin.entity.Role;
 import com.yubin.entity.User;
+import com.yubin.mapper.RoleMapper;
 import com.yubin.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +17,9 @@ import java.util.List;
 public class UserService implements UserDao {
 
     @Autowired(required = false)
+    private RoleMapper roleMapper;
+
+    @Autowired(required = false)
     private UserMapper userMapper;
     public Object insertUser(User user) {
         Result result = new Result();
@@ -22,6 +27,12 @@ public class UserService implements UserDao {
         user.setCreateTime(new Date());
         if (userMapper.checkUser(user)==null) {
             int i = userMapper.insertUser(user);
+            Role role = new Role();
+            role.setCreateTime(new Date());
+            role.setUserName(user.getUsername());
+            role.setUserId(userMapper.checkUser(user).getUserId());
+            role.setRole("user");
+            roleMapper.insertRole(role);
             if (i == 0) {
                 return result.error("创建用户失败！");
             } else {

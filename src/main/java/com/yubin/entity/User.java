@@ -16,7 +16,7 @@ import java.util.Date;
 public class User  extends BaseEntity{
 
     //用户编号
-    private int userId;
+    private String userId;
 
     private String token;
     private String role;

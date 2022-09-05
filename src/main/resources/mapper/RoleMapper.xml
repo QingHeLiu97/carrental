@@ -12,16 +12,18 @@
         status AS status
     </sql>
 
-    <insert id="insertNotice" parameterType="com.yubin.entity.Notice">
+    <insert id="insertRole" parameterType="com.yubin.entity.Role">
         INSERT INTO role(
-         content,
-         autor,
+         user_id,
+         user_name,
+         role,
          create_time,
          update_time
         )VALUES (
-        #{content},
-        #{autor}
-        #{createTime}
+        #{userId},
+        #{userName},
+        #{role},
+        #{createTime},
         #{updateTime}
         )
     </insert>
@@ -38,6 +40,7 @@
         <if test="userName !='' and userName !=null " >user_name =#{userName}, </if>
         <if test="role !='' and role !=null " >role =#{role} ,</if>
         <if test="updateTime !='' and updateTime !=null " >update_time =#{updateTime} </if>
+        where role_id = #{roleId}
     </update>
 
     <select id="selectAllRole" resultType="com.yubin.entity.Role">
