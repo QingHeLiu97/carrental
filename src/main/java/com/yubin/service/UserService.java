@@ -17,7 +17,19 @@ public class UserService implements UserDao {
     @Autowired(required = false)
     private UserMapper userMapper;
     public Object insertUser(User user) {
-        return userMapper.insertUser(user);
+        Result result = new Result();
+        user.setPassword(user.getUsername()+user.getPhone().substring(7,11));
+        user.setCreateTime(new Date());
+        if (userMapper.checkUser(user)==null) {
+            int i = userMapper.insertUser(user);
+            if (i == 0) {
+                return result.error("创建用户失败！");
+            } else {
+                return result.success();
+            }
+        }else{
+            return result.error("该用户已存在");
+        }
     }
 
     @Override

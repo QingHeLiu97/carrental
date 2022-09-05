@@ -26,7 +26,7 @@
          id_card,
          address,
          create_time,
-         update_time,
+         update_time
         )VALUES (
         #{username},
         #{password},
@@ -99,10 +99,10 @@
         from user where user_id = #{userId}
     </select>
 
-    <select id="selectUserRecord">
+    <select id="checkUser" resultType="com.yubin.entity.User">
         select
         <include refid="UserColumns"/>
-        from user
+        from user where username = #{username} and phone =#{phone}
     </select>
 
 

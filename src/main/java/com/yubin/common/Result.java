@@ -50,7 +50,7 @@ public class Result {
 
     public static Result error(String message) {
         Result result = new Result();
-        result.setCode(CommonEnum.SUCCESS.getResultCode());
+        result.setCode(CommonEnum.SIGNATURE_NOT_MATCH.getResultCode());
         result.setMessage(CommonEnum.SUCCESS.getResultMsg());
         result.setResult(message);
         return result;

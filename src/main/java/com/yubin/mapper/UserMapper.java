@@ -11,6 +11,7 @@ public interface UserMapper {
     int deleteUser(String userId);
 
     int updateUser(User user);
+    User checkUser (User user);
 
     List<User> selectAll();
     List<User> getListSize();
