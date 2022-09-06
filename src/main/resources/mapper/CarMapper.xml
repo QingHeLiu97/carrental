@@ -28,6 +28,7 @@
         create_time,
         update_time
         )VALUES (
+        #{type},
         #{color},
         #{price},
         #{userPhone},

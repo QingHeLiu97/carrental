@@ -28,11 +28,11 @@ public class CarService implements CarDao {
         Result result = new Result();
         int i = 0;
         if (role.equals("admin")){
-            carMapper.insertCar(car);
+            i = carMapper.insertCar(car);
         }else{
             car.setUserPhone(phone);
             car.setCreateTime(new Date());
-            carMapper.insertCar(car);
+            i = carMapper.insertCar(car);
         }
         if (i == 0){
             return result.error();

@@ -21,7 +21,7 @@ public class UploadUtils {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
             String datePath = dateFormat.format(new Date());
             //上传到哪个路径下
-            File targetPath = new File("D:\\image\\upload\\" , datePath);
+            File targetPath = new File("C:\\Users\\ouyan\\Desktop\\vue\\car-vue\\carrental-vue-yubin\\public" , datePath);
             if (!targetPath.exists()){
                 targetPath.mkdirs();
             }
