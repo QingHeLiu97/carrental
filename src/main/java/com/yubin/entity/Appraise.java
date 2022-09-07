@@ -17,7 +17,7 @@ import java.util.List;
 public class Appraise {
 
     //编号
-    private int apprId;
+    private String apprId;
     //内容
     private String content;
     //创建人
