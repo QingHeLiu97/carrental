@@ -38,7 +38,14 @@ public class CarController {
 
     @PostMapping("/list")
     @ResponseBody
-    public Object getCarList(String roles,String phone){
-        return carService.selectAllCar(roles,phone);
+    public Object getCarList(String role,String phone){
+        return carService.selectAllCar(role,phone);
     }
+
+    @PostMapping("/resever")
+    @ResponseBody
+    public Object reseverCar(String carId,String phone){
+        return null;
+    }
+
 }

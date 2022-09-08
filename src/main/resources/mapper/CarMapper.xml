@@ -71,10 +71,10 @@
         from car where status = '0' and car_id = #{carId}
     </select>
 
-    <select id="selectCarRecord" resultType="com.yubin.entity.Car">
+    <select id="selectCarByUser" resultType="com.yubin.entity.Car">
         select
         <include refid="CarColumns"/>
-        from car
+        from car where status = '0'
     </select>
     <select id="selectCarByPhone" resultType="com.yubin.entity.Car">
         select

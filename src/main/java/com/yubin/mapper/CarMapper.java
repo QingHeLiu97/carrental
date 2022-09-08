@@ -14,7 +14,7 @@ public interface CarMapper {
 
     List<Car> selectAllCar();
 
-    List<Car> selectCarRecord();
+    List<Car> selectCarByUser();
 
     Car selectCarByid(String id);
 

@@ -67,14 +67,20 @@ public class CarService implements CarDao {
     }
 
     @Override
-    public Object selectAllCar(String roles,String phone) {
+    public Object selectAllCar(String role,String phone) {
         Result result = new Result();
         List<Car> carList = new ArrayList<>();
-        if (phone ==null){
+
+        if(role.equals("admin")){
             carList = carMapper.selectAllCar();
         }else{
-            carList = carMapper.selectCarByPhone(phone);
+            if (phone ==null){
+                carList = carMapper.selectCarByUser();
+            }else{
+                carList = carMapper.selectCarByPhone(phone);
+            }
         }
+
 
         if (carList.size() > 0 ){
             return result.success(carList);
@@ -95,4 +101,14 @@ public class CarService implements CarDao {
         }
 
     }
+
+    @Override
+    public Object reseverCar(String carId, String phone) {
+        Car car = carMapper.selectCarByid(carId);
+
+
+        return null;
+    }
+
+
 }

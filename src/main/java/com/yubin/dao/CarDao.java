@@ -16,4 +16,5 @@ public interface CarDao {
     Object selectAllCar(String role,String phone);
 
     Object selectCarByid(String id);
+    Object reseverCar(String carId , String phone);
 }
