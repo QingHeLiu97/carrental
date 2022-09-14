@@ -3,7 +3,9 @@ package com.yubin.service;
 import com.yubin.common.Result;
 import com.yubin.dao.AppraiseDao;
 import com.yubin.entity.Appraise;
+import com.yubin.entity.Order;
 import com.yubin.mapper.AppraiseMapper;
+import com.yubin.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +19,24 @@ public class AppraiseService implements AppraiseDao {
     @Autowired(required = false)
     private AppraiseMapper appraiseMapper;
 
+    @Autowired(required = false)
+    private OrderMapper orderMapper;
 
     @Override
     public Object insertAppraise(Appraise appraise) {
+
+        appraise.setCreateTime(new Date());
+        appraise.setStatus("0");
         int i = appraiseMapper.insertAppraise(appraise);
         if (i == 0){
             return new Result().error();
         }else{
+            if (appraise.getOrderId()!=null){
+                Order order = orderMapper.selectOrderById(appraise.getOrderId());
+                order.setUpdateTime(new Date());
+                order.setStatus("3");
+                orderMapper.updateOrder(order);
+            }
             return new Result().success();
         }
     }
@@ -59,7 +72,12 @@ public class AppraiseService implements AppraiseDao {
         if (role.equals("admin")){
             appraiseList =  appraiseMapper.selectAllAppraise();
         }else{
-            appraiseList = appraiseMapper.selectAppraiseByPhone(phone);
+            if (phone ==null){
+                appraiseList = appraiseMapper.selectAllAppraiseByUser();
+            }else{
+                appraiseList = appraiseMapper.selectAppraiseByPhone(phone);
+            }
+
         }
 
 

@@ -13,7 +13,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/upload/**")
-                .addResourceLocations("file:D:/image/upload/");
+        registry.addResourceHandler("/image/**")
+                .addResourceLocations("file:E:\\Microsoft Visual Studio\\Desktop\\car-vue\\carrental-vue-yubin\\public\\image");
     }
 }

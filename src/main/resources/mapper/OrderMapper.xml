@@ -81,13 +81,24 @@
     <select id="selectOrderById" resultType="com.yubin.entity.Order">
         select
         <include refid="OrderColumns"/>
-        from orderes where status = '0' and order_id = #{order_id}
+        from orderes where order_id = #{order_id}
     </select>
 
     <select id="getOrderByPhone" resultType="com.yubin.entity.Order">
         select
         <include refid="OrderColumns"/>
-        from orderes where user_phone = #{phone} and status = '0'
+        from orderes where user_phone = #{phone} and status = '3'
     </select>
 
+<!--    <select id="getOrderByPhone" resultType="com.yubin.entity.Order">-->
+<!--        select-->
+<!--        <include refid="OrderColumns"/>-->
+<!--        from orderes where user_phone = #{phone} and status = '3'-->
+<!--    </select>-->
+
+    <select id="getOrderByPhoneNotNull" resultType="com.yubin.entity.Order">
+        select
+        <include refid="OrderColumns"/>
+        from orderes where user_phone = #{phone} and status != '1'
+    </select>
 </mapper>

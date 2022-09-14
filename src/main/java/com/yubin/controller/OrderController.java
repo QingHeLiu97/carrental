@@ -43,4 +43,15 @@ public class OrderController {
     public Object getOrderByPhone(String phone){
         return orderService.getOrderByPhone(phone);
     }
+    @PostMapping("/yuding")
+    @ResponseBody
+   public Object yuding(String userId ,String carId) {
+        return orderService.yuding(userId, carId);
+    }
+
+    @PostMapping("/unyuding")
+    @ResponseBody
+    public Object unyuding(String carId,String orderId) {
+        return orderService.unyuding(carId,orderId);
+    }
 }

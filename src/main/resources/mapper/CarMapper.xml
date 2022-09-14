@@ -68,7 +68,7 @@
     <select id="selectCarByid" resultType="com.yubin.entity.Car">
         select
         <include refid="CarColumns"/>
-        from car where status = '0' and car_id = #{carId}
+        from car where  car_id = #{carId}
     </select>
 
     <select id="selectCarByUser" resultType="com.yubin.entity.Car">
@@ -79,6 +79,6 @@
     <select id="selectCarByPhone" resultType="com.yubin.entity.Car">
         select
         <include refid="CarColumns" />
-        from car where user_phone = #{phone}
+        from car where user_phone = #{phone} and status != '1'
     </select>
 </mapper>

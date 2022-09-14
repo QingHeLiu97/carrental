@@ -14,6 +14,7 @@ public interface OrderMapper {
 
     List<Order> selectAllOrder();
     List<Order> getOrderByPhone(String phone);
+    List<Order> getOrderByPhoneNotNull(String phone);
 
     List<Order> selectOrderRecord();
 

@@ -15,7 +15,7 @@
     </sql>
 
     <insert id="insertAppraise" >
-        INSET INTO appraise(
+        insert INTO appraise(
         content,
         create_by,
         phone,
@@ -69,7 +69,19 @@
     <select id="selectAppraiseByPhone" resultType="com.yubin.entity.Appraise">
         select
         <include refid="AppraiseColumns"/>
-        from appraise where phone = #{phone} and status = '0'
+        from appraise where phone = #{phone}
+    </select>
+
+    <select id="selectAppraiseByOrderId" resultType="com.yubin.entity.Appraise">
+        select
+        <include refid="AppraiseColumns"/>
+        from appraise where order_id = #{orderId}
+    </select>
+
+    <select id="selectAllAppraiseByUser" resultType="com.yubin.entity.Appraise">
+        select
+        <include refid="AppraiseColumns"/>
+        from appraise where status = '0'
     </select>
 
 </mapper>

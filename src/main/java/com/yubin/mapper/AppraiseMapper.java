@@ -12,8 +12,10 @@ public interface AppraiseMapper {
     int updateAppraise(Appraise appraise);
 
     List<Appraise> selectAllAppraise();
+    List<Appraise> selectAllAppraiseByUser();
 
     List<Appraise> selectAppraiseByPhone(String phone);
 
     Appraise selectAppraiseById(String id);
+    Appraise selectAppraiseByOrderId(String orderId);
 }

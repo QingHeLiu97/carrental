@@ -21,14 +21,15 @@ public class UploadUtils {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
             String datePath = dateFormat.format(new Date());
             //上传到哪个路径下
-            File targetPath = new File("C:\\Users\\ouyan\\Desktop\\vue\\car-vue\\carrental-vue-yubin\\public" , datePath);
+            File targetPath = new File("E:\\Microsoft Visual Studio\\Desktop\\car-vue\\" +
+                    "carrental-vue-yubin\\public\\image" , datePath);
             if (!targetPath.exists()){
                 targetPath.mkdirs();
             }
             File targetFilename = new File(targetPath, newFilename);
             multipartFile.transferTo(targetFilename);
 //            return String.valueOf(targetFilename);//返回文件路径
-            return "upload/"+datePath+"/"+newFilename;//资源映射路径
+            return "image/"+datePath+"/"+newFilename;//资源映射路径
         } catch (IOException e) {
             e.printStackTrace();
             return "失败！";

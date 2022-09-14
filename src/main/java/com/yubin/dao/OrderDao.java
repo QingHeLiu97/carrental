@@ -17,4 +17,8 @@ public interface OrderDao {
     Object getOrderByPhone(String phone);
 
     Object selectOrderById(String id);
+
+    Object yuding(String userId ,String carId);
+
+    Object unyuding(String carId ,String orderId);
 }
